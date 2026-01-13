@@ -12,55 +12,48 @@ services:
   - type: web
     name: trm-ops
     runtime: node
-    nodeVersion: 20 # Matches package.json engines requirement
     region: frankfurt # Options: oregon, frankfurt, singapore, mumbai, etc.
     plan: starter # Options: free (for testing), starter, standard, pro
     buildCommand: npm install && npm run build
     startCommand: npm run start
     healthCheckPath: /
     autoDeploy: true # Auto-deploy on git push
+    # Node version is automatically detected from package.json engines field
     envVars:
       # Node Environment
       - key: NODE_ENV
         value: production
       
       # Firebase Client Config (exposed to browser)
+      # Optional - app works in demo mode without these
       - key: VITE_FIREBASE_API_KEY
         sync: false
-        required: false # Optional for demo mode
       - key: VITE_FIREBASE_AUTH_DOMAIN
         sync: false
-        required: false
       - key: VITE_FIREBASE_PROJECT_ID
         sync: false
-        required: false
       - key: VITE_FIREBASE_STORAGE_BUCKET
         sync: false
-        required: false
       - key: VITE_FIREBASE_MESSAGING_SENDER_ID
         sync: false
-        required: false
       - key: VITE_FIREBASE_APP_ID
         sync: false
-        required: false
       
       # Firebase Admin SDK (server-side only)
+      # Format: JSON stringified service account object
+      # Example: {"type":"service_account","project_id":"..."}
       - key: FIREBASE_SERVICE_ACCOUNT
         sync: false
-        required: false
-        # Format: JSON stringified service account object
-        # Example: {"type":"service_account","project_id":"..."}
       
       # Africa's Talking SMS (for OTP authentication)
+      # Optional - app works in demo mode without these
+      # Use "sandbox" as username for testing
       - key: AFRICASTALKING_API_KEY
         sync: false
-        required: false # Optional - app works in demo mode without it
       - key: AFRICASTALKING_USERNAME
         sync: false
-        required: false
-        # Use "sandbox" for testing, or your production username
       
       # Session Secret (auto-generated)
+      # Render will automatically generate a secure random string
       - key: SESSION_SECRET
         generateValue: true
-        # Render will automatically generate a secure random string
