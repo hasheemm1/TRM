@@ -9,6 +9,7 @@
     "typecheck": "npx react-router typegen && tsc"
   },
   "dependencies": {
+    "@react-router/dev": "7.12.0",
     "@react-router/node": "7.12.0",
     "@react-router/serve": "7.12.0",
     "africastalking": "^0.7.8",
@@ -23,7 +24,6 @@
     "react-router": "7.12.0"
   },
   "devDependencies": {
-    "@react-router/dev": "7.12.0",
     "@tailwindcss/vite": "^4.1.18",
     "@types/node": "^22",
     "@types/react": "^19.2.7",
