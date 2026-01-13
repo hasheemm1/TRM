@@ -1,0 +1,145 @@
+@import "tailwindcss";
+
+@theme {
+  /* TRM Brand Colors */
+  --color-trm-red: #dc362a;
+  --color-trm-primary: #dc362a;
+  --color-trm-secondary: #1a1a1a;
+  --color-trm-accent: #dc362a;
+  --color-trm-success: #10b981;
+  --color-trm-warning: #f59e0b;
+  --color-trm-danger: #dc362a;
+  
+  /* Security App Dark Theme */
+  --color-security-bg: #0a0f1a;
+  --color-security-surface: #141b2d;
+  --color-security-border: #1f2937;
+  --color-security-text: #e2e8f0;
+  --color-security-accent: #22d3ee;
+  
+  /* Fonts */
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply antialiased;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100 dark:bg-gray-900;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 dark:bg-gray-700 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-400 dark:bg-gray-600;
+}
+
+/* Status badge animations */
+@keyframes pulse-success {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+}
+
+@keyframes pulse-warning {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(245, 158, 11, 0); }
+}
+
+@keyframes pulse-danger {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(239, 68, 68, 0); }
+}
+
+.animate-pulse-success {
+  animation: pulse-success 2s infinite;
+}
+
+.animate-pulse-warning {
+  animation: pulse-warning 2s infinite;
+}
+
+.animate-pulse-danger {
+  animation: pulse-danger 2s infinite;
+}
+
+/* Gradient backgrounds */
+.bg-gradient-trm {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+}
+
+.bg-gradient-trm-red {
+  background: linear-gradient(135deg, var(--color-trm-red) 0%, #b82d23 50%, var(--color-trm-red) 100%);
+}
+
+.bg-gradient-security {
+  background: linear-gradient(180deg, var(--color-security-bg) 0%, var(--color-security-surface) 100%);
+}
+
+/* Glass effect */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-dark {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Card hover effects */
+.card-hover {
+  @apply transition-all duration-300;
+}
+
+.card-hover:hover {
+  @apply -translate-y-1 shadow-xl;
+}
+
+/* Stagger animation for list items */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.5s ease-out forwards;
+}
+
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+
+/* Security app scan effect */
+@keyframes scan-line {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(400%); }
+}
+
+.scan-line {
+  animation: scan-line 2s linear infinite;
+}
