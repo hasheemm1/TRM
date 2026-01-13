@@ -52,10 +52,18 @@ export default function Login() {
       <div className="flex-1 flex items-center justify-center p-8 bg-white">
         <div className="w-full max-w-md">
           <div className="mb-10">
-            <Link to="/" className="inline-flex items-center gap-3 mb-8">
-              <img src="/logo.png" alt="TRM" className="h-12 w-auto" />
+            <a 
+              href="/" 
+              className="inline-flex items-center gap-2 text-trm-red hover:text-trm-red/80 mb-6 text-sm font-medium underline"
+            >
+              ← Back to Home
+            </a>
+            <div className="flex items-center gap-3 mb-6">
+              <a href="/" className="hover:opacity-80 transition-opacity">
+                <img src="/logo.png" alt="TRM" className="h-12 w-auto" />
+              </a>
               <span className="text-xl font-bold text-trm-red font-display">TRM Ops</span>
-            </Link>
+            </div>
             <h1 className="text-3xl font-bold text-gray-900 font-display mb-2">
               Welcome back
             </h1>
@@ -108,7 +116,7 @@ export default function Login() {
           {/* Security note */}
           <div className="mt-8 pt-8 border-t border-gray-100">
             <div className="flex items-center gap-3 text-gray-500">
-              <Shield className="w-5 h-5 text-trm-primary" />
+              <Shield className="w-5 h-5 text-trm-red" />
               <p className="text-sm">
                 Your phone number is secured with OTP verification via Africa's Talking
               </p>
@@ -130,11 +138,13 @@ export default function Login() {
         <div className="absolute top-0 left-0 right-0 h-2 bg-trm-red" />
 
         <div className="relative z-10 text-center text-white">
-          <img 
-            src="/logo.png" 
-            alt="TRM" 
-            className="h-24 w-auto mx-auto mb-8"
-          />
+          <a href="/" className="inline-block hover:opacity-80 transition-opacity cursor-pointer">
+            <img 
+              src="/logo.png" 
+              alt="TRM" 
+              className="h-24 w-auto mx-auto mb-8"
+            />
+          </a>
           <h2 className="text-4xl font-bold mb-4 font-display">TRM Ops</h2>
           <p className="text-xl text-white/80 mb-8">
             Centralized Facility Operations Platform

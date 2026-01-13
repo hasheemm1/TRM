@@ -5,7 +5,8 @@ import {
   Users, 
   Clock, 
   LogOut,
-  AlertTriangle
+  AlertTriangle,
+  Home
 } from "lucide-react";
 import { clsx } from "clsx";
 import type { ReactNode } from "react";
@@ -29,13 +30,13 @@ export function SecurityLayout({ children, guardName = "Guard" }: SecurityLayout
     <div className="min-h-screen bg-security-bg text-security-text">
       {/* Top Bar */}
       <header className="h-16 bg-security-surface border-b border-security-border flex items-center px-6">
-        <div className="flex items-center gap-3">
+        <Link to="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
           <img src="/logo.png" alt="TRM" className="h-10 w-auto" />
           <div>
             <h1 className="text-lg font-bold text-white font-display">TRM Security</h1>
             <p className="text-xs text-gray-400">Gate Control</p>
           </div>
-        </div>
+        </Link>
 
         <div className="flex-1" />
 
@@ -66,6 +67,13 @@ export function SecurityLayout({ children, guardName = "Guard" }: SecurityLayout
         {/* Sidebar */}
         <aside className="w-20 lg:w-64 bg-security-surface border-r border-security-border min-h-[calc(100vh-4rem)]">
           <nav className="p-2 lg:p-4 space-y-1">
+            <Link
+              to="/"
+              className="flex items-center justify-center lg:justify-start gap-3 p-3 lg:px-4 lg:py-3 rounded-xl transition-all duration-200 text-gray-400 hover:bg-gray-800 hover:text-white mb-2"
+            >
+              <Home className="w-6 h-6" />
+              <span className="hidden lg:block font-medium">Home</span>
+            </Link>
             {navItems.map((item) => {
               const isActive = location.pathname === item.href;
               return (
